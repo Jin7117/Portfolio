@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-limestone text-ink font-body antialiased;
+    background-image:
+      linear-gradient(rgba(35, 34, 32, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(35, 34, 32, 0.035) 1px, transparent 1px);
+    background-size: 100% 3rem, 3rem 100%;
+  }
+
+  .dark body {
+    @apply bg-charcoal text-limestone;
+    background-image:
+      linear-gradient(rgba(237, 234, 224, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(237, 234, 224, 0.04) 1px, transparent 1px);
+  }
+
+  .dark .text-ink {
+    color: #edeae0;
+  }
+
+  .dark .text-ink\/80 {
+    color: rgb(237 234 224 / 0.8);
+  }
+
+  .dark .text-ink\/75 {
+    color: rgb(237 234 224 / 0.75);
+  }
+
+  .dark .text-ink\/70 {
+    color: rgb(237 234 224 / 0.7);
+  }
+
+  .dark .text-ink\/60 {
+    color: rgb(237 234 224 / 0.6);
+  }
+
+  .dark .text-ink\/65 {
+    color: rgb(237 234 224 / 0.65);
+  }
+
+  .dark .text-ink\/55 {
+    color: rgb(237 234 224 / 0.55);
+  }
+
+  .dark .text-ink\/50 {
+    color: rgb(237 234 224 / 0.5);
+  }
+
+  .dark .bg-paper {
+    background-color: #2b2a27;
+  }
+
+  .dark .bg-limestone\/80,
+  .dark .bg-limestone\/95 {
+    background-color: rgb(31 30 28 / 0.9);
+  }
+
+  :focus-visible {
+    outline: 2px solid theme("colors.bronze");
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  .rule-line {
+    border-color: rgba(35, 34, 32, 0.14);
+  }
+
+  .dark .rule-line {
+    border-color: rgba(237, 234, 224, 0.16);
+  }
+}
+
+.theme-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 15;
+  pointer-events: none;
+  animation: theme-wipe 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.theme-transition-light {
+  background: #c2bfb5;
+}
+
+.theme-transition-dark {
+  background: #121210;
+}
+
+@keyframes theme-wipe {
+  0% {
+    clip-path: circle(0% at 0 100%);
+    opacity: 0;
+  }
+
+  20% {
+    clip-path: circle(70% at 0 100%);
+    opacity: 0.9;
+  }
+
+  65% {
+    clip-path: circle(150% at 0 100%);
+    opacity: 0.72;
+  }
+
+  100% {
+    clip-path: circle(150% at 0 100%);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
